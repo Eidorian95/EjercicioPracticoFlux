@@ -1,6 +1,6 @@
 package com.adrianiglesia.ejerciciopracticoflux.View
 
-import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity(), UsersAdapter.OnItemClickListener{
     }
 
     override fun onItemClicked(user: UserJson.User) {
-
-
+            var intent: Intent = Intent(this, UserActivity::class.java)
+            startActivity(intent)
     }
 
 
