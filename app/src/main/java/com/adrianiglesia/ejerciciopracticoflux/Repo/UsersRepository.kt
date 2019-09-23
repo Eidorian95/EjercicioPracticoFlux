@@ -1,6 +1,7 @@
 package com.adrianiglesia.ejerciciopracticoflux.Repo
 
 import android.util.Log
+import com.adrianiglesia.ejerciciopracticoflux.Model.User
 import com.adrianiglesia.ejerciciopracticoflux.Model.UserJson
 import retrofit2.Call
 import retrofit2.Callback
@@ -8,7 +9,7 @@ import retrofit2.Response
 
 class UsersRepository {
 
-    fun getAllUsers(successHandler: (List<UserJson.User>?)->Unit, failureHandler: (Throwable?)-> Unit){
+    fun getAllUsers(successHandler: (List<User>?)->Unit, failureHandler: (Throwable?)-> Unit){
         var users:Call<UserJson> = MyRetrofit.getClient.getAllUsers()
         users.enqueue(object : Callback<UserJson>{
             override fun onFailure(call: Call<UserJson>, t: Throwable) {

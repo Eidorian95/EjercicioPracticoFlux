@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.adrianiglesia.ejerciciopracticoflux.Model.UserJson
+import com.adrianiglesia.ejerciciopracticoflux.Model.User
 import com.adrianiglesia.ejerciciopracticoflux.R
 import com.adrianiglesia.ejerciciopracticoflux.ViewModel.MainViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), UsersAdapter.OnItemClickListener{
             it?.let { showMessage(false) }
         })
 
-        viewModel.getUsers().observe(this, Observer<List<UserJson.User>>{ users ->
+        viewModel.getUsers().observe(this, Observer<List<User>>{ users ->
             if(users.isNotEmpty()){
                 recycler_users.visibility = View.VISIBLE
                 recycler_users.adapter = UsersAdapter(users, this)
@@ -44,8 +44,9 @@ class MainActivity : AppCompatActivity(), UsersAdapter.OnItemClickListener{
         })
     }
 
-    override fun onItemClicked(user: UserJson.User) {
-            var intent: Intent = Intent(this, UserActivity::class.java)
+    override fun onItemClicked(user: User) {
+            var intent = Intent(this, UserActivity::class.java)
+            intent.putExtra("USER",user)
             startActivity(intent)
     }
 

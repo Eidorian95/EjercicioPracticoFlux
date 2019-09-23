@@ -1,14 +1,13 @@
 package com.adrianiglesia.ejerciciopracticoflux.ViewModel
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.adrianiglesia.ejerciciopracticoflux.Model.UserJson
+import com.adrianiglesia.ejerciciopracticoflux.Model.User
 import com.adrianiglesia.ejerciciopracticoflux.Repo.UsersRepository
 
 class MainViewModel: ViewModel() {
 
-    private lateinit var usersList:MutableLiveData<List<UserJson.User>>
+    private lateinit var usersList:MutableLiveData<List<User>>
 
     private var repo:UsersRepository = UsersRepository()
 
@@ -17,7 +16,7 @@ class MainViewModel: ViewModel() {
     var apiError = MutableLiveData<Throwable>()
 
 
-    fun getUsers():MutableLiveData<List<UserJson.User>>{
+    fun getUsers():MutableLiveData<List<User>>{
         if(!::usersList.isInitialized){
             usersList = MutableLiveData()
             loadUsers()
