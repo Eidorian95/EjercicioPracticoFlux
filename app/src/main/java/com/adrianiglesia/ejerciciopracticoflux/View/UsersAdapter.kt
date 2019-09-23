@@ -3,14 +3,13 @@ package com.adrianiglesia.ejerciciopracticoflux.View
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
-import com.adrianiglesia.ejerciciopracticoflux.Model.UserJson
+import com.adrianiglesia.ejerciciopracticoflux.Model.User
 import com.adrianiglesia.ejerciciopracticoflux.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.card_users.view.*
 
-class UsersAdapter(val users:List<UserJson.User>, val itemClickListener:OnItemClickListener): RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
+class UsersAdapter(val users:List<User>, private val itemClickListener:OnItemClickListener): RecyclerView.Adapter<UsersAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +27,7 @@ class UsersAdapter(val users:List<UserJson.User>, val itemClickListener:OnItemCl
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bindItems(user: UserJson.User, itemClickListener: OnItemClickListener) {
+        fun bindItems(user: User, itemClickListener: OnItemClickListener) {
             itemView.card_username.text = user.login.username
             itemView.card_country.text=user.nat
             val picasso = Picasso.get()
@@ -43,6 +42,6 @@ class UsersAdapter(val users:List<UserJson.User>, val itemClickListener:OnItemCl
 
 
     interface OnItemClickListener{
-        fun onItemClicked(user: UserJson.User)
+        fun onItemClicked(user: User)
     }
 }
